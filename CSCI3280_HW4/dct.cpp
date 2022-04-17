@@ -36,12 +36,12 @@ int main(int argc, char** argv)
 	//! preprocess by shifting pixel values by 128
 	//TODO
 	double convert[rows][cols];
-	for(int y=0;y<rows;y++){
-		for(int x =0;x< cols;x++){
-			unsigned char pixel =0;
-			s_img.getPixel(y,x,pixel);
-			convert[y][x] = pixel-128;
+	for(int i=0;i<rows;i++){
+		for(int j=0;j< cols;j++){
+			unsigned char pixel ='\0';
+			s_img.getPixel(i,j,pixel);
 			
+			convert[i][j] = (double)((int)pixel-128);
 		}
 	}
 	//! 2D DCT for every 8x8 block (assume that the input image resolution is fixed to 256)	
@@ -63,7 +63,7 @@ int main(int argc, char** argv)
 					double sum=0,pixel=0;
 					for(int y=0;y<8;y++){
 						for(int x=0;x<8;x++){
-							pixel = convert[xpos+k][ypos+l]*cos((2*k+1)*PI*i/16);
+							//pixel = convert[xpos+k][ypos+l]*cos((2*k+1)*PI*i/16);
 						}
 					}
 					coeffArray[xpos+u][ypos+v] = cu*cv*sum;
