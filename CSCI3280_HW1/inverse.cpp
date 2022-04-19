@@ -49,7 +49,7 @@ int main(int argc, char** argv)
             gray = fgetc(fp);
             for(int m=0;m<MAX_SHADES;m++){
                 if(shades[m]==gray){
-                    unsigned char color = (MAX_SHADES-1-m)*36;
+                    unsigned char color = (MAX_SHADES-1-m)* 36;
                     final.setColor(x,y,color,color,color);
                     break;
                 }
